@@ -2,6 +2,7 @@
   "name": "volunteer-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://web-production-3a7b.up.railway.app/",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
