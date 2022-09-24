@@ -6,7 +6,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 export const LoginRoute = ({children}) => {
     const [user, loading, error] = useAuthState(auth);
-    console.log(loading);
     
     if (loading) {
         return <p>Loading...</p>;
