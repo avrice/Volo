@@ -12,11 +12,19 @@ export const counterSlice = createSlice({
         // which detects changes to a "draft state" and produces a brand new
         // immutable state based off those changes
         state.value = !state.value;
+      },
+
+      login: (state) => {
+        state.value = true;
+      },
+
+      logout: (state) => {
+        state.value = false;
       }
     },
   })
   
   // Action creators are generated for each case reducer function
-  export const { toggle } = counterSlice.actions
+  export const { toggle, login, logout } = counterSlice.actions
   
   export default counterSlice.reducer
