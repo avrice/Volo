@@ -47,7 +47,7 @@ const signInWithGoogle = async () => {
         // Yeets user if email domain not rice.edu
         if (!user.email.includes('@rice.edu')) {
             signOutFromGoogle();
-            throw 'Not Rice email';
+            throw new Error('Unauthorized email (must be Rice email)');
         }
 
     } catch (err) {
@@ -61,7 +61,7 @@ const signInWithGoogle = async () => {
 };
 
 // Google sign out
-const signOutFromGoogle = () => {
+const signOutFromGoogle = async () => {
     try {
         auth.signOut();
     } catch (err) {

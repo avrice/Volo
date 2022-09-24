@@ -13,8 +13,8 @@ export const Dashboard = () => {
 
     useEffect(() => {
         if (!user) {
-            navigate('/login');
             dispatch(logout())
+            navigate('/login');
         }
     })
 

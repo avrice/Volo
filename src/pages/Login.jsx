@@ -12,14 +12,15 @@ export const Login = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        
         if (user) {
-            navigate('/dashboard');
             dispatch(login());
+            navigate('/dashboard');
         }
     });
 
-    return (
-        <Button onClick={() => signInWithGoogle()}>LOGIN</Button>
-    )
+    if (loading) {
+        return (<p>Loading login page...</p>);
+    } else {
+        return <Button onClick={() => signInWithGoogle()}>LOGIN</Button>;
+    }
 }
