@@ -17,8 +17,6 @@ import {
     addDoc,
 } from "firebase/firestore";
 
-import { useDispatch } from "react-redux";
-
 const firebaseConfig = {
     apiKey: "AIzaSyAT3indf4Z0RXM6y_44qC7iIDfNgbEnlMg",
     authDomain: "volo-363502.firebaseapp.com",
