@@ -14,6 +14,6 @@ export const LoginRoute = ({children}) => {
     } else if (error) {
        return <p>Authentication error</p>;
     } else {
-       return <Navigate to='/login' />
+       return <Navigate to='/home' />
     }
 }
