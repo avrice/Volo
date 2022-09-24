@@ -32,14 +32,19 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const googleProvider = new GoogleAuthProvider();
+
+// Disables automatic account selection
 googleProvider.setCustomParameters({
     prompt: 'select_account'
 });
 
+// Google email authentication
 const signInWithGoogle = async () => {
     try {
         const res = await signInWithPopup(auth, googleProvider);
         const user = res.user;
+
+        // Yeets user if email domain not rice.edu
         if (!user.email.includes('@rice.edu')) {
             signOutFromGoogle();
             throw 'Not Rice email';
@@ -55,6 +60,7 @@ const signInWithGoogle = async () => {
     }
 };
 
+// Google sign out
 const signOutFromGoogle = () => {
     try {
         auth.signOut();
