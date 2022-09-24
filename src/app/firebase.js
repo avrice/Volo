@@ -28,8 +28,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -39,7 +39,7 @@ googleProvider.setCustomParameters({
 });
 
 // Google email authentication
-const signInWithGoogle = async () => {
+export const signInWithGoogle = async () => {
     try {
         const res = await signInWithPopup(auth, googleProvider);
         const user = res.user;
@@ -61,7 +61,7 @@ const signInWithGoogle = async () => {
 };
 
 // Google sign out
-const signOutFromGoogle = async () => {
+export const signOutFromGoogle = async () => {
     try {
         auth.signOut();
     } catch (err) {
@@ -70,7 +70,7 @@ const signOutFromGoogle = async () => {
     }
 }
 
-const logInWithEmailAndPassword = async (email, password) => {
+export const logInWithEmailAndPassword = async (email, password) => {
     try {
         await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
@@ -79,7 +79,7 @@ const logInWithEmailAndPassword = async (email, password) => {
     }
 };
 
-const registerWithEmailAndPassword = async (name, email, password) => {
+export const registerWithEmailAndPassword = async (name, email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
     } catch (err) {
@@ -88,7 +88,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     }
 };
 
-const sendPasswordReset = async (email) => {
+export const sendPasswordReset = async (email) => {
     try {
         await sendPasswordResetEmail(auth, email);
         alert("Password reset link sent!");
@@ -98,18 +98,8 @@ const sendPasswordReset = async (email) => {
     }
 };
 
-const logout = () => {
+export const logout = () => {
     signOut(auth);
-  };
-  export {
-    auth,
-    db,
-    signOutFromGoogle,
-    signInWithGoogle,
-    logInWithEmailAndPassword,
-    registerWithEmailAndPassword,
-    sendPasswordReset,
-    logout,
-  };
+};
   
 
