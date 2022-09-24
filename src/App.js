@@ -1,14 +1,15 @@
 import logo from './logo.svg';
 import React, { useState } from 'react';
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
-import { ProtectedRoute } from './components/ProtectedRoute';
-import { GuestRoute } from './components/GuestRoute';
+import { LoginRoute } from './routes/LoginRoute';
+import { GuestRoute } from './routes/GuestRoute';
 
 // Pages
 import './App.css';
 import { Dashboard } from './pages/Dashboard';
 import { Login } from './pages/Login';
 import { NoMatch } from './pages/NoMatch';
+import { Leaderboard } from './pages/Leaderboard';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Navigate to='/dashboard' />} />
         <Route path='/login' element={<GuestRoute><Login /></GuestRoute>} />
-        <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path='/dashboard' element={<LoginRoute><Dashboard /></LoginRoute>} />
+        <Route path='/leaderboard' element={<LoginRoute><Leaderboard /></LoginRoute>} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
     </BrowserRouter>

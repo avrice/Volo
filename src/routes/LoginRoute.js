@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Navigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
-export const ProtectedRoute = ({children}) => {
+export const LoginRoute = ({children}) => {
     const auth = useSelector((state) => state.auth.value);
 
     return (
