@@ -2,7 +2,7 @@ import React from "react";
 
 import { Column, Stack, Img, Row, Text, List } from "components";
 
-const FrameEighteenPage = () => {
+const LeaderboardPage = () => {
   return (
     <>
       <Column className="font-inter items-center mx-[auto] w-[100%]">
@@ -15,13 +15,13 @@ const FrameEighteenPage = () => {
                 alt="Vector"
               />
               <Img
-                src="images/img_vector_204X1248.png"
+                src="images/img_vector_208X1247.png"
                 className="absolute lg:h-[119px] xl:h-[137px] 2xl:h-[154px] 3xl:h-[184px] left-[0] top-[0] w-[65%]"
                 alt="Vector One"
               />
             </Stack>
             <Img
-              src="images/img_vector_220X560.png"
+              src="images/img_vector_213X559.png"
               className="lg:h-[129px] xl:h-[147px] 2xl:h-[166px] 3xl:h-[199px] lg:mt-[351px] xl:mt-[401px] 2xl:mt-[451px] 3xl:mt-[542px] w-[29%]"
               alt="Vector Two"
             />
@@ -32,21 +32,18 @@ const FrameEighteenPage = () => {
                 <Text className="cursor-pointer hover:font-bold font-bold xl:mt-[10px] 2xl:mt-[11px] 3xl:mt-[13px] lg:mt-[8px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-white_A700 w-[auto]">
                   Rice Volunteering
                 </Text>
-                <Text className="cursor-pointer hover:font-bold font-bold lg:ml-[501px] xl:ml-[573px] 2xl:ml-[645px] 3xl:ml-[774px] 3xl:mt-[10px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[9px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-white_A700 w-[auto]">
-                  Coordinate
+                <Text className="cursor-pointer hover:font-bold font-bold lg:ml-[476px] xl:ml-[544px] 2xl:ml-[612px] 3xl:ml-[734px] 3xl:mt-[11px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[9px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-white_A700 w-[auto]">
+                  Dashboard
                 </Text>
-                <Text className="cursor-pointer hover:font-bold font-bold lg:ml-[23px] xl:ml-[26px] 2xl:ml-[30px] 3xl:ml-[36px] 3xl:mt-[11px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[9px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-white_A700 w-[auto]">
+                <Text className="cursor-pointer hover:font-bold font-bold lg:ml-[58px] xl:ml-[66px] 2xl:ml-[75px] 3xl:ml-[90px] 3xl:mt-[11px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[9px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-white_A700 w-[auto]">
                   Leaderboard
                 </Text>
-                <Text className="cursor-pointer hover:font-bold font-bold lg:ml-[23px] xl:ml-[26px] 2xl:ml-[30px] 3xl:ml-[36px] 3xl:mt-[11px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[9px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-white_A700 w-[auto]">
-                  Calendar
-                </Text>
-                <Text className="cursor-pointer hover:font-bold font-bold lg:ml-[23px] xl:ml-[26px] 2xl:ml-[30px] 3xl:ml-[36px] 3xl:mt-[11px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[9px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-white_A700 w-[auto]">
-                  Tracker
+                <Text className="cursor-pointer hover:font-bold font-bold lg:ml-[58px] xl:ml-[66px] 2xl:ml-[75px] 3xl:ml-[90px] 3xl:mt-[10px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[9px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-white_A700 w-[auto]">
+                  Coordinate
                 </Text>
                 <Img
                   src="images/img_eye.svg"
-                  className="lg:h-[33px] xl:h-[37px] 2xl:h-[42px] 3xl:h-[50px] lg:ml-[36px] xl:ml-[42px] 2xl:ml-[47px] 3xl:ml-[56px] lg:w-[32px] xl:w-[36px] 2xl:w-[41px] 3xl:w-[49px]"
+                  className="lg:h-[33px] xl:h-[37px] 2xl:h-[42px] 3xl:h-[50px] lg:ml-[57px] xl:ml-[66px] 2xl:ml-[74px] 3xl:ml-[89px] lg:w-[32px] xl:w-[36px] 2xl:w-[41px] 3xl:w-[49px]"
                   alt="eye"
                 />
               </Row>
@@ -55,7 +52,7 @@ const FrameEighteenPage = () => {
               <Text className="font-bold lg:text-[32px] xl:text-[36px] 2xl:text-[41px] 3xl:text-[49px] text-gray_901 w-[auto]">
                 Leaderboard
               </Text>
-              <Text className="font-normal 2xl:mt-[10px] 3xl:mt-[12px] lg:mt-[8px] xl:mt-[9px] not-italic lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-gray_601 w-[auto]">
+              <Text className="font-normal 2xl:mt-[10px] 3xl:mt-[12px] lg:mt-[8px] xl:mt-[9px] not-italic lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-gray_600 w-[auto]">
                 2022-2023 Academic Year
               </Text>
             </Column>
@@ -158,4 +155,4 @@ const FrameEighteenPage = () => {
   );
 };
 
-export default FrameEighteenPage;
+export default LeaderboardPage;

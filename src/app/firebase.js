@@ -18,13 +18,13 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAT3indf4Z0RXM6y_44qC7iIDfNgbEnlMg",
-    authDomain: "volo-363502.firebaseapp.com",
-    projectId: "volo-363502",
-    storageBucket: "volo-363502.appspot.com",
-    messagingSenderId: "535893625047",
-    appId: "1:535893625047:web:0cd6362330093b91a5c892",
-    measurementId: "G-C98MPNHH5C"
+    apiKey: "AIzaSyCTTn5gWVYhav_Z4fTtxoWj2EtHL18YhQo",
+    authDomain: "volo-6b417.firebaseapp.com",
+    projectId: "volo-6b417",
+    storageBucket: "volo-6b417.appspot.com",
+    messagingSenderId: "884514902708",
+    appId: "1:884514902708:web:00dc1024011d18f9957de1",
+    measurementId: "G-JZWSR4EPDD"
 };
 
 const app = initializeApp(firebaseConfig);

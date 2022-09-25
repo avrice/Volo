@@ -1,8 +1,15 @@
 import React from "react";
 
-import { Column, Img, Row, Text, Button } from "components";
+import { useNavigate } from "react-router-dom";
+import { Column, Img, Row, Text, Stack } from "components";
 
-const FrameThirtyFourPage = () => {
+const OverlayOnePage = () => {
+  const navigate = useNavigate();
+
+  function handleNavigate1() {
+    navigate("/overlaythree");
+  }
+
   return (
     <>
       <Column className="bg-white_A700 font-nunito mx-[auto] lg:p-[28px] xl:p-[32px] 2xl:p-[36px] 3xl:p-[43px] w-[100%]">
@@ -13,10 +20,10 @@ const FrameThirtyFourPage = () => {
             alt="close"
           />
         </Column>
-        <Column className="items-center 3xl:mb-[111px] lg:mb-[72px] xl:mb-[82px] 2xl:mb-[93px] lg:ml-[45px] xl:ml-[51px] 2xl:ml-[58px] 3xl:ml-[69px] lg:mt-[47px] xl:mt-[53px] 2xl:mt-[60px] 3xl:mt-[72px] lg:pr-[54px] xl:pr-[62px] 2xl:pr-[69px] 3xl:pr-[83px] w-[96%]">
+        <Column className="items-center mb-[3px] lg:ml-[45px] xl:ml-[51px] 2xl:ml-[58px] 3xl:ml-[69px] lg:mt-[47px] xl:mt-[53px] 2xl:mt-[60px] 3xl:mt-[72px] lg:pr-[18px] xl:pr-[20px] 2xl:pr-[23px] 3xl:pr-[27px] w-[96%]">
           <Column className="w-[100%]">
-            <Row className="w-[94%]">
-              <Column className="bg-gray_903 lg:h-[45px] xl:h-[51px] 2xl:h-[58px] 3xl:h-[69px] items-center 3xl:mb-[11px] lg:mb-[7px] xl:mb-[8px] 2xl:mb-[9px] lg:px-[4px] 2xl:px-[5px] xl:px-[5px] 3xl:px-[6px] rounded-radius5 lg:w-[44px] xl:w-[50px] 2xl:w-[57px] 3xl:w-[68px]">
+            <Row className="w-[90%]">
+              <Column className="bg-gray_900 lg:h-[45px] xl:h-[51px] 2xl:h-[58px] 3xl:h-[69px] items-center 3xl:mb-[11px] lg:mb-[7px] xl:mb-[8px] 2xl:mb-[9px] lg:px-[4px] 2xl:px-[5px] xl:px-[5px] 3xl:px-[6px] rounded-radius5 lg:w-[44px] xl:w-[50px] 2xl:w-[57px] 3xl:w-[68px]">
                 <Text className="font-bold leading-[normal] mb-[3px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-center text-white_A700 w-[79%]">
                   Sep
                   <br />
@@ -36,7 +43,7 @@ const FrameThirtyFourPage = () => {
             <Text className="font-semibold lg:mt-[10px] xl:mt-[12px] 2xl:mt-[13px] 3xl:mt-[16px] lg:text-[22px] xl:text-[25px] 2xl:text-[29px] 3xl:text-[34px] text-black_900 w-[auto]">
               Sid Commons
             </Text>
-            <Text className="font-semibold leading-[normal] lg:mt-[19px] xl:mt-[21px] 2xl:mt-[24px] 3xl:mt-[29px] lg:text-[22px] xl:text-[25px] 2xl:text-[29px] 3xl:text-[34px] text-black_900 w-[99%]">
+            <Text className="font-semibold leading-[normal] lg:mt-[19px] xl:mt-[21px] 2xl:mt-[24px] 3xl:mt-[29px] lg:text-[22px] xl:text-[25px] 2xl:text-[29px] 3xl:text-[34px] text-black_900 w-[95%]">
               Description:
               <br />
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -48,7 +55,7 @@ const FrameThirtyFourPage = () => {
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </Text>
             <Row className="items-end justify-between lg:mt-[25px] xl:mt-[29px] 2xl:mt-[32px] 3xl:mt-[39px] w-[100%]">
-              <Text className="font-semibold leading-[normal] lg:text-[22px] xl:text-[25px] 2xl:text-[29px] 3xl:text-[34px] text-black_900 w-[33%]">
+              <Text className="font-semibold leading-[normal] lg:text-[22px] xl:text-[25px] 2xl:text-[29px] 3xl:text-[34px] text-black_900 w-[32%]">
                 Requirements:
                 <br />
                 Lorem ipsum dolor sit amet
@@ -57,15 +64,26 @@ const FrameThirtyFourPage = () => {
                 <br />
                 Lorem ipsum dolor sit amet
               </Text>
-              <Button
-                className="font-bold mb-[4px] 3xl:mt-[103px] lg:mt-[67px] xl:mt-[76px] 2xl:mt-[86px] lg:text-[28px] xl:text-[33px] 2xl:text-[37px] 3xl:text-[44px] text-center w-[14%]"
-                shape="RoundedBorder5"
-                size="sm"
-                variant="FillTeal300"
-              >
-                Register
-              </Button>
+              <Stack className="lg:h-[41px] xl:h-[47px] 2xl:h-[53px] 3xl:h-[63px] mb-[4px] 3xl:mt-[103px] lg:mt-[67px] xl:mt-[76px] 2xl:mt-[86px] w-[17%]">
+                <Column className="absolute bg-teal_300 items-center justify-end left-[0] p-[3px] rounded-radius5 w-[78%]">
+                  <Text className="font-bold lg:mt-[5px] 2xl:mt-[6px] xl:mt-[6px] 3xl:mt-[8px] lg:text-[28px] xl:text-[33px] 2xl:text-[37px] 3xl:text-[44px] text-white_A700 w-[auto]">
+                    Register
+                  </Text>
+                </Column>
+                <Text
+                  className="common-pointer absolute bg-teal_300 font-bold lg:pl-[10px] xl:pl-[12px] 2xl:pl-[13px] 3xl:pl-[16px] lg:py-[5px] 2xl:py-[6px] xl:py-[6px] 3xl:py-[8px] rounded-radius5 lg:text-[28px] xl:text-[33px] 2xl:text-[37px] 3xl:text-[44px] text-white_A700 w-[186px]"
+                  onClick={handleNavigate1}
+                >
+                  Check in
+                </Text>
+              </Stack>
             </Row>
+            <Text className="font-semibold lg:mt-[18px] xl:mt-[20px] 2xl:mt-[23px] 3xl:mt-[27px] lg:text-[22px] xl:text-[25px] 2xl:text-[29px] 3xl:text-[34px] text-black_900 w-[auto]">
+              Contact: Ovik Das
+            </Text>
+            <Text className="font-semibold lg:mt-[6px] xl:mt-[7px] 2xl:mt-[8px] 3xl:mt-[9px] lg:text-[22px] xl:text-[25px] 2xl:text-[29px] 3xl:text-[34px] text-black_900 w-[auto]">
+              Poster netID
+            </Text>
           </Column>
         </Column>
       </Column>
@@ -73,4 +91,4 @@ const FrameThirtyFourPage = () => {
   );
 };
 
-export default FrameThirtyFourPage;
+export default OverlayOnePage;

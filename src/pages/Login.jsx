@@ -27,11 +27,8 @@ export const Login = () => {
                 const authUser = auth.currentUser;
                 if (authUser) {
                     authUser.getIdToken().then((token) => {
-                        console.log('set auth token');
                         sessionStorage.setItem('authToken', token);
                     });
-                } else {
-                    console.log('not able to set auth token');
                 }
             });
         }}>LOGIN</Button>;
