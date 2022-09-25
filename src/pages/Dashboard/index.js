@@ -126,7 +126,7 @@ const DashboardPage = () => {
                   />
                 </Stack>
                 <Column className="items-center lg:ml-[35px] xl:ml-[40px] 2xl:ml-[45px] 3xl:ml-[54px] w-[30%]">
-                  {events['upcoming'].map((event) => (
+                  {events!=undefined && events['upcoming'] ? events['upcoming'].map((event) => (
                   <Row className="bg-gray_100 items-center justify-evenly lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
                     <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-center lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
                       <Text className="font-bold leading-[normal] mb-[3px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[79%]">
@@ -150,7 +150,7 @@ const DashboardPage = () => {
                       alt="hookg9c457be5d"
                     />
                   </Row>
-                  ))}
+                  )) : <h>Nothing to see here!</h>}
                 </Column>
                 <Img
                   src="images/img_group2.svg"
@@ -182,7 +182,7 @@ const DashboardPage = () => {
                     className="gap-[0] min-h-[auto] lg:mt-[16px] xl:mt-[18px] 2xl:mt-[21px] 3xl:mt-[25px] w-[100%]"
                     orientation="vertical"
                   >
-                    {events['past'].map((event) => (
+                    {events!=undefined && events['past'] ? events['past'].map((event) => (
                         <Row className="bg-gray_100 items-center justify-evenly lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
                           <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-center lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
                             <Text className="font-bold leading-[normal] mb-[3px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[79%]">
@@ -206,7 +206,7 @@ const DashboardPage = () => {
                               alt="hookg9c457be5d"
                           />
                         </Row>
-                    ))}
+                    )) : <h>Nothing to see here!</h>}
                   </List>
                 </Column>
                 <Img
