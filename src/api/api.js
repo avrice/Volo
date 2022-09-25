@@ -1,7 +1,7 @@
 // convert
 import axios from "axios";
 
-const instance = axios.create({
+export const instance = axios.create({
     baseURL: 'https://web-production-3a7b.up.railway.app'
 });
 

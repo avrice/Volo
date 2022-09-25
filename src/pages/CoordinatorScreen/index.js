@@ -14,9 +14,35 @@ import { Link } from "react-router-dom";
 import { FormControl, InputLabel, Input, TextField } from "@mui/material";
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { createEvent, instance } from "api/api";
 
 const CoordinatorScreenPage = () => {
   const navigate = useNavigate();
+  const [title, setTitle] = useState('');
+  const [college, setCollege] = useState('');
+  const [netId, setNetId] = useState('');
+  const [contactName, setContactName] = useState('');
+  const [location, setLocation] = useState('');
+  const [startDate, setStartDate] = useState(0);
+  const [startTime, setStartTime] = useState(0);
+  const [endDate, setEndDate] = useState(0);
+  const [endTime, setEndTime] = useState(0);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      title: title,
+      netId: netId,
+      contactName: contactName,
+      location: location,
+      startDate: startDate,
+      endDate: endDate,
+      endTime: endTime
+    }
+    let parsedCollege = college.toLowerCase().split(' ')[0];
+    console.log(instance.defaults.headers.common['Authorization']); 
+    createEvent(parsedCollege, data);
+  }
 
   function handleNavigate2() {
     navigate("/leaderboard");
@@ -58,11 +84,11 @@ const CoordinatorScreenPage = () => {
                 <header className="font-inter w-[100%]">
                   <Row className="xl:pb-[10px] 2xl:pb-[12px] 3xl:pb-[14px] lg:pb-[9px] w-[100%]">
                     <Link className="cursor-pointer hover:font-bold font-bold xl:mt-[10px] 2xl:mt-[11px] 3xl:mt-[13px] lg:mt-[8px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-white_A700 w-[auto]"
-                    to="/dashboard">
+                      to="/dashboard">
                       Volo
                     </Link>
                     <Link className="cursor-pointer hover:font-bold font-bold lg:ml-[476px] xl:ml-[544px] 2xl:ml-[612px] 3xl:ml-[734px] 3xl:mt-[11px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[9px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-white_A700 w-[auto]"
-                    to="/dashboard">
+                      to="/dashboard">
                       Dashboard
                     </Link>
                     <Text
@@ -72,7 +98,7 @@ const CoordinatorScreenPage = () => {
                       Leaderboard
                     </Text>
                     <Link className="cursor-pointer hover:font-bold font-bold lg:ml-[58px] xl:ml-[66px] 2xl:ml-[75px] 3xl:ml-[90px] 3xl:mt-[10px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[9px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-white_A700 w-[auto]"
-                    to="/coordinate">
+                      to="/coordinate">
                       Coordinate
                     </Link>
                     <Img
@@ -232,7 +258,7 @@ const CoordinatorScreenPage = () => {
                     <Text className="font-bold lg:mr-[2px] 2xl:mr-[3px] xl:mr-[3px] 3xl:mr-[4px] lg:text-[20px] xl:text-[23px] 2xl:text-[26px] 3xl:text-[31px] text-black_900 w-[auto]">
                       Post Volunteer Opportunity
                     </Text>
-                    
+
                   </Column>
                 </Row>
               </Column>
@@ -241,17 +267,25 @@ const CoordinatorScreenPage = () => {
           <Column className="absolute bottom-[4%] font-nunito items-center right-[17%] w-[24%]">
             <Column className="lg:mt-[26px] xl:mt-[30px] 2xl:mt-[33px] 3xl:mt-[40px] w-[100%]">
               <FormControl>
-                <TextField label="Event title"/>
-                <TextField label="Contact netId"/>
-                <TextField label="Contact name"/>
-                <TextField label="Event location"/>
+                <TextField label="Event title" onChange={e => setTitle(e.target.value)} />
+                <TextField label="College" onChange={e => setCollege(e.target.value)} />
+                <TextField label="Contact netId" onChange={e => setNetId(e.target.value)}/>
+                <TextField label="Contact name" onChange={e => setContactName(e.target.value)}/>
+                <TextField label="Event location" onChange={e => setLocation(e.target.value)}/>
                 <LocalizationProvider dateAdapter={AdapterMoment}>
-                  <DateTimePicker onChange={() => {}} renderInput={props => <TextField {...props} />}/>
-                  <DateTimePicker onChange={() => {}} renderInput={props => <TextField {...props} />}/>
+                  <DateTimePicker onChange={value => setStartDate(value)}
+                    renderInput={props => <TextField {...props}
+                      label="Start date/time" />}
+                  />
+                  <DateTimePicker onChange={value => setEndDate(value)}
+                    renderInput={props => <TextField {...props} />}
+                    label="End date/time"
+                  />
                 </LocalizationProvider>
-                
+
               </FormControl>
-              <Button className="font-bold lg:ml-[217px] xl:ml-[248px] 2xl:ml-[279px] 3xl:ml-[335px] lg:mt-[22px] xl:mt-[26px] 2xl:mt-[29px] 3xl:mt-[35px] lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-center w-[20%]">
+              <Button className="font-bold lg:ml-[217px] xl:ml-[248px] 2xl:ml-[279px] 3xl:ml-[335px] lg:mt-[22px] xl:mt-[26px] 2xl:mt-[29px] 3xl:mt-[35px] lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-center w-[20%]"
+              onClick={handleSubmit}>
                 Save
               </Button>
             </Column>

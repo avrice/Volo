@@ -10,6 +10,7 @@ import { NoMatch } from './pages/NoMatch';
 import NotFound from "pages/NoMatch";
 import CoordinatorScreenPage from 'pages/CoordinatorScreen';
 import DashboardPage from 'pages/Dashboard';
+import JamesDashboard from 'pages/JamesDashboard';
 import HomeLoggedInPage from 'pages/HomeLoggedIn';
 import HomeNotLoggedInPage from 'pages/HomeNotLoggedIn';
 import LeaderboardPage from 'pages/Leaderboard';
@@ -27,7 +28,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Navigate to='/home' />} />
             <Route path='/home' element={<HomeNotLoggedInPage />} />
-            <Route path='/dashboard' element={<LoginRoute><DashboardPage /></LoginRoute>} />
+            <Route path='/dashboard' element={<LoginRoute><JamesDashboard /></LoginRoute>} />
             <Route path='/leaderboard' element={<LoginRoute><LeaderboardPage /></LoginRoute>} />
             <Route path='/coordinate' element={<LoginRoute><CoordinatorScreenPage /></LoginRoute>} />
             <Route path='*' element={<NoMatch />} />
