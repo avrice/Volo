@@ -19,7 +19,7 @@ function getUserById(userId) {
     return instance.get(`/users/${userId}`);
 }
 
-function getEventsByCollege(collegeName, eventId) {
+function getEventsByCollege(collegeName) {
     return instance.get(`/events/${collegeName}`);
 }
 
@@ -36,7 +36,7 @@ function updateEvent(collegeName, eventId, event) {
 }
 
 function deleteEvent(collegeName, eventId) {
-    return instance.delete(`/events/${collegeName}/${eventId}`);
+    return instance.delete(`/events/${collegeName}`), { params: {event_id: eventId}};
 }
 
 function addAttendance(eventId) {
@@ -51,6 +51,6 @@ function updateUserInfo(userId, collegeName) {
     return instance.put(`/users/${userId}`, { 'affiliation': collegeName});
 }
 
-function updateAttendance(eventId, attendance) {
+function updateAttendance(eventId) {
     return instance.put(`/attendance/${eventId}`);
 }
