@@ -2,8 +2,21 @@ import React from "react";
 
 import { Column, Stack, Img, Row, Text, List, Button } from "components";
 import { Link } from "react-router-dom";
+import {getEventsByCollege, getLeaderboardByCollege} from "../../api/api";
 
 const DashboardPage = () => {
+  const [events, setEvents] = React.useState(null);
+
+  React.useEffect(() => {
+    getEventsByCollege("jones").then((data) => {
+
+      setEvents({
+        'upcoming' : data['data']['list'].filter((event) => Date.parse(event['timestamp_start']) > Date.now()),
+        'past' : data['data']['list'].filter((event) => Date.parse(event['timestamp_end']) < Date.now())
+      });
+    });
+  }, [])
+
   return (
     <>
       <Column className="items-center mx-[auto] w-[100%]">
@@ -101,90 +114,6 @@ const DashboardPage = () => {
                       </Text>
                     </Column>
                   </Row>
-                  <Row className="bg-gray_100 items-center 2xl:my-[10px] 3xl:my-[12px] lg:my-[8px] xl:my-[9px] lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
-                    <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-center xl:ml-[4px] lg:ml-[4px] 2xl:ml-[5px] 3xl:ml-[6px] lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
-                      <Text className="font-bold leading-[normal] mb-[3px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[79%]">
-                        Sep
-                        <br />
-                        25
-                      </Text>
-                    </Column>
-                    <Column className="lg:ml-[10px] xl:ml-[12px] 2xl:ml-[13px] 3xl:ml-[16px] mt-[1px] w-[82%]">
-                      <Text className="font-semibold lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900 w-[auto]">
-                        Location
-                      </Text>
-                      <Row className="mt-[1px] w-[100%]">
-                        <Text className="font-bold mt-[2px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[21px] text-black_900 w-[auto]">
-                          Event
-                        </Text>
-                        <Text className="font-semibold mb-[1px] lg:ml-[120px] xl:ml-[137px] 2xl:ml-[154px] 3xl:ml-[185px] lg:text-[16px] xl:text-[18px] 2xl:text-[21px] 3xl:text-[25px] text-black_900 w-[auto]">
-                          1hr
-                        </Text>
-                        <Button className="font-bold xl:ml-[10px] 2xl:ml-[11px] 3xl:ml-[13px] lg:ml-[8px] mt-[1px] lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-center w-[22%]">
-                          Check in
-                        </Button>
-                      </Row>
-                      <Text className="font-semibold mt-[3px] lg:text-[11px] xl:text-[13px] 2xl:text-[15px] 3xl:text-[18px] text-black_900 w-[auto]">
-                        1:30pm - 2:30pm CST
-                      </Text>
-                    </Column>
-                  </Row>
-                  <Row className="bg-gray_100 items-center 2xl:my-[10px] 3xl:my-[12px] lg:my-[8px] xl:my-[9px] lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
-                    <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-center xl:ml-[4px] lg:ml-[4px] 2xl:ml-[5px] 3xl:ml-[6px] lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
-                      <Text className="font-bold leading-[normal] mb-[3px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[79%]">
-                        Sep
-                        <br />
-                        25
-                      </Text>
-                    </Column>
-                    <Column className="lg:ml-[10px] xl:ml-[12px] 2xl:ml-[13px] 3xl:ml-[16px] mt-[1px] w-[82%]">
-                      <Text className="font-semibold lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900 w-[auto]">
-                        Location
-                      </Text>
-                      <Row className="mt-[1px] w-[100%]">
-                        <Text className="font-bold mt-[2px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[21px] text-black_900 w-[auto]">
-                          Event
-                        </Text>
-                        <Text className="font-semibold mb-[1px] lg:ml-[120px] xl:ml-[137px] 2xl:ml-[154px] 3xl:ml-[185px] lg:text-[16px] xl:text-[18px] 2xl:text-[21px] 3xl:text-[25px] text-black_900 w-[auto]">
-                          1hr
-                        </Text>
-                        <Button className="font-bold xl:ml-[10px] 2xl:ml-[11px] 3xl:ml-[13px] lg:ml-[8px] mt-[1px] lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-center w-[22%]">
-                          Check in
-                        </Button>
-                      </Row>
-                      <Text className="font-semibold mt-[3px] lg:text-[11px] xl:text-[13px] 2xl:text-[15px] 3xl:text-[18px] text-black_900 w-[auto]">
-                        1:30pm - 2:30pm CST
-                      </Text>
-                    </Column>
-                  </Row>
-                  <Row className="bg-gray_100 items-center 2xl:my-[10px] 3xl:my-[12px] lg:my-[8px] xl:my-[9px] lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
-                    <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-center xl:ml-[4px] lg:ml-[4px] 2xl:ml-[5px] 3xl:ml-[6px] lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
-                      <Text className="font-bold leading-[normal] mb-[3px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[79%]">
-                        Sep
-                        <br />
-                        25
-                      </Text>
-                    </Column>
-                    <Column className="lg:ml-[10px] xl:ml-[12px] 2xl:ml-[13px] 3xl:ml-[16px] mt-[1px] w-[82%]">
-                      <Text className="font-semibold lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900 w-[auto]">
-                        Location
-                      </Text>
-                      <Row className="mt-[1px] w-[100%]">
-                        <Text className="font-bold mt-[2px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[21px] text-black_900 w-[auto]">
-                          Event
-                        </Text>
-                        <Text className="font-semibold mb-[1px] lg:ml-[120px] xl:ml-[137px] 2xl:ml-[154px] 3xl:ml-[185px] lg:text-[16px] xl:text-[18px] 2xl:text-[21px] 3xl:text-[25px] text-black_900 w-[auto]">
-                          1hr
-                        </Text>
-                        <Button className="font-bold xl:ml-[10px] 2xl:ml-[11px] 3xl:ml-[13px] lg:ml-[8px] mt-[1px] lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-center w-[22%]">
-                          Check in
-                        </Button>
-                      </Row>
-                      <Text className="font-semibold mt-[3px] lg:text-[11px] xl:text-[13px] 2xl:text-[15px] 3xl:text-[18px] text-black_900 w-[auto]">
-                        1:30pm - 2:30pm CST
-                      </Text>
-                    </Column>
-                  </Row>
                 </List>
                 <Stack
                   className="bg-cover bg-repeat lg:h-[245px] xl:h-[281px] 2xl:h-[316px] 3xl:h-[379px] lg:ml-[2px] 2xl:ml-[3px] xl:ml-[3px] 3xl:ml-[4px] w-[1%]"
@@ -197,125 +126,31 @@ const DashboardPage = () => {
                   />
                 </Stack>
                 <Column className="items-center lg:ml-[35px] xl:ml-[40px] 2xl:ml-[45px] 3xl:ml-[54px] w-[30%]">
+                  {events['upcoming'].map((event) => (
                   <Row className="bg-gray_100 items-center justify-evenly lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
                     <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-center lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
                       <Text className="font-bold leading-[normal] mb-[3px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[79%]">
-                        Sep
-                        <br />
-                        20
+                        {new Date(event['timestamp_start']).getMonth() + " " + new Date(event['timestamp_start']).getDay()}
                       </Text>
                     </Column>
                     <Column className="mt-[1px] w-[60%]">
                       <Text className="font-semibold lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900 w-[auto]">
-                        Sid Commons
+                        {event['location']}
                       </Text>
                       <Text className="font-bold mt-[4px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[21px] text-black_900 w-[auto]">
-                        Sid 80s Cleanup
+                        {event['name']}
                       </Text>
                       <Text className="font-semibold mt-[4px] lg:text-[11px] xl:text-[13px] 2xl:text-[15px] 3xl:text-[18px] text-black_900 w-[auto]">
-                        1:30pm - 2:30pm CST
+                        {new Date(event['timestamp_start']).toLocaleDateString() + "-" + new Date(event['timestamp_start']).toLocaleDateString()}
                       </Text>
                     </Column>
-                    <Text className="font-semibold lg:text-[16px] xl:text-[18px] 2xl:text-[21px] 3xl:text-[25px] text-black_900 w-[auto]">
-                      1hr
-                    </Text>
                     <Img
                       src="images/img_hookg9c457be5d.png"
                       className="lg:h-[30px] xl:h-[34px] 2xl:h-[38px] 3xl:h-[46px] lg:w-[29px] xl:w-[33px] 2xl:w-[37px] 3xl:w-[45px]"
                       alt="hookg9c457be5d"
                     />
                   </Row>
-                  <Stack className="lg:h-[59px] xl:h-[67px] 2xl:h-[76px] 3xl:h-[91px] lg:mt-[16px] xl:mt-[18px] 2xl:mt-[21px] 3xl:mt-[25px] w-[100%]">
-                    <Row className="absolute bg-gray_100 items-end justify-evenly lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] top-[0] w-[100%]">
-                      <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-center lg:my-[5px] xl:my-[6px] 2xl:my-[7px] 3xl:my-[9px] lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
-                        <Text className="font-bold leading-[normal] mb-[3px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[79%]">
-                          Sep
-                          <br />
-                          19
-                        </Text>
-                      </Column>
-                      <Column className="lg:mb-[14px] xl:mb-[16px] 2xl:mb-[18px] 3xl:mb-[22px] w-[59%]">
-                        <Text className="font-semibold lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900 w-[auto]">
-                          Sid Commons
-                        </Text>
-                        <Text className="font-bold mt-[2px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[21px] text-black_900 w-[auto]">
-                          Sid 80s Decoration
-                        </Text>
-                      </Column>
-                      <Text className="font-semibold lg:mb-[14px] xl:mb-[16px] 2xl:mb-[18px] 3xl:mb-[21px] lg:mt-[10px] xl:mt-[12px] 2xl:mt-[13px] 3xl:mt-[16px] lg:text-[16px] xl:text-[18px] 2xl:text-[21px] 3xl:text-[25px] text-black_900 w-[auto]">
-                        2hr
-                      </Text>
-                      <Img
-                        src="images/img_hookg9c457be5d.png"
-                        className="lg:h-[30px] xl:h-[34px] 2xl:h-[38px] 3xl:h-[46px] lg:my-[5px] xl:my-[6px] 2xl:my-[7px] 3xl:my-[9px] lg:w-[29px] xl:w-[33px] 2xl:w-[37px] 3xl:w-[45px]"
-                        alt="hookg9c457be5d One"
-                      />
-                    </Row>
-                    <Text className="absolute bottom-[0] font-semibold leading-[normal] left-[16%] lg:text-[11px] xl:text-[13px] 2xl:text-[15px] 3xl:text-[18px] text-black_900 w-[33%]">
-                      8:00pm - 10:00pm CST
-                    </Text>
-                  </Stack>
-                  <List
-                    className="gap-[0] min-h-[auto] lg:mt-[6px] xl:mt-[7px] 2xl:mt-[8px] 3xl:mt-[9px] w-[100%]"
-                    orientation="vertical"
-                  >
-                    <Row className="bg-gray_100 items-center justify-evenly 2xl:my-[10px] 3xl:my-[12px] lg:my-[8px] xl:my-[9px] lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
-                      <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-center lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
-                        <Text className="font-bold leading-[normal] mb-[3px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[79%]">
-                          Sep
-                          <br />
-                          14
-                        </Text>
-                      </Column>
-                      <Column className="mb-[1px] w-[60%]">
-                        <Text className="font-semibold lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900 w-[auto]">
-                          Lovett Commons
-                        </Text>
-                        <Text className="font-bold mt-[4px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[21px] text-black_900 w-[auto]">
-                          Lovett Public Cleanup
-                        </Text>
-                        <Text className="font-semibold mt-[2px] lg:text-[11px] xl:text-[13px] 2xl:text-[15px] 3xl:text-[18px] text-black_900 w-[auto]">
-                          1:30am - 2:30am CST
-                        </Text>
-                      </Column>
-                      <Text className="font-semibold lg:text-[16px] xl:text-[18px] 2xl:text-[21px] 3xl:text-[25px] text-black_900 w-[auto]">
-                        1hr
-                      </Text>
-                      <Img
-                        src="images/img_hookg9c457be5d.png"
-                        className="lg:h-[30px] xl:h-[34px] 2xl:h-[38px] 3xl:h-[46px] lg:w-[29px] xl:w-[33px] 2xl:w-[37px] 3xl:w-[45px]"
-                        alt="hookg9c457be5d Two"
-                      />
-                    </Row>
-                    <Row className="bg-gray_100 items-center justify-evenly 2xl:my-[10px] 3xl:my-[12px] lg:my-[8px] xl:my-[9px] lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
-                      <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-center lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
-                        <Text className="font-bold leading-[normal] mb-[3px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[79%]">
-                          Sep
-                          <br />
-                          13
-                        </Text>
-                      </Column>
-                      <Column className="mt-[1px] w-[60%]">
-                        <Text className="font-semibold lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900 w-[auto]">
-                          Lovett Commons
-                        </Text>
-                        <Text className="font-bold mt-[4px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[21px] text-black_900 w-[auto]">
-                          Lovett Public Security
-                        </Text>
-                        <Text className="font-semibold mt-[4px] lg:text-[11px] xl:text-[13px] 2xl:text-[15px] 3xl:text-[18px] text-black_900 w-[auto]">
-                          8:30pm - 9:30pm CST
-                        </Text>
-                      </Column>
-                      <Text className="font-semibold lg:text-[16px] xl:text-[18px] 2xl:text-[21px] 3xl:text-[25px] text-black_900 w-[auto]">
-                        1hr
-                      </Text>
-                      <Img
-                        src="images/img_hookg9c457be5d.png"
-                        className="lg:h-[30px] xl:h-[34px] 2xl:h-[38px] 3xl:h-[46px] lg:w-[29px] xl:w-[33px] 2xl:w-[37px] 3xl:w-[45px]"
-                        alt="hookg9c457be5d Three"
-                      />
-                    </Row>
-                  </List>
+                  ))}
                 </Column>
                 <Img
                   src="images/img_group2.svg"
@@ -347,77 +182,31 @@ const DashboardPage = () => {
                     className="gap-[0] min-h-[auto] lg:mt-[16px] xl:mt-[18px] 2xl:mt-[21px] 3xl:mt-[25px] w-[100%]"
                     orientation="vertical"
                   >
-                    <Row className="bg-gray_100 items-center justify-evenly 2xl:my-[10px] 3xl:my-[12px] lg:my-[8px] xl:my-[9px] lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
-                      <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-center lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
-                        <Text className="font-bold leading-[normal] mb-[3px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[79%]">
-                          Sep
-                          <br />
-                          28
-                        </Text>
-                      </Column>
-                      <Column className="mt-[1px] w-[84%]">
-                        <Text className="font-semibold lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900 w-[auto]">
-                          Baker Commons
-                        </Text>
-                        <Row className="justify-between mt-[1px] w-[100%]">
-                          <Text className="font-bold mt-[4px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[21px] text-black_900 w-[auto]">
-                            Baker Christmas Cleanup
-                          </Text>
-                          <Text className="font-semibold mb-[1px] lg:text-[16px] xl:text-[18px] 2xl:text-[21px] 3xl:text-[25px] text-black_900 w-[auto]">
-                            2hr
-                          </Text>
+                    {events['past'].map((event) => (
+                        <Row className="bg-gray_100 items-center justify-evenly lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
+                          <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-center lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
+                            <Text className="font-bold leading-[normal] mb-[3px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[79%]">
+                              {new Date(event['timestamp_start']).getMonth() + " " + new Date(event['timestamp_start']).getDay()}
+                            </Text>
+                          </Column>
+                          <Column className="mt-[1px] w-[60%]">
+                            <Text className="font-semibold lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900 w-[auto]">
+                              {event['location']}
+                            </Text>
+                            <Text className="font-bold mt-[4px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[21px] text-black_900 w-[auto]">
+                              {event['name']}
+                            </Text>
+                            <Text className="font-semibold mt-[4px] lg:text-[11px] xl:text-[13px] 2xl:text-[15px] 3xl:text-[18px] text-black_900 w-[auto]">
+                              {new Date(event['timestamp_start']).toLocaleDateString() + "-" + new Date(event['timestamp_start']).toLocaleDateString()}
+                            </Text>
+                          </Column>
+                          <Img
+                              src="images/img_hookg9c457be5d.png"
+                              className="lg:h-[30px] xl:h-[34px] 2xl:h-[38px] 3xl:h-[46px] lg:w-[29px] xl:w-[33px] 2xl:w-[37px] 3xl:w-[45px]"
+                              alt="hookg9c457be5d"
+                          />
                         </Row>
-                        <Text className="font-semibold mt-[4px] lg:text-[11px] xl:text-[13px] 2xl:text-[15px] 3xl:text-[18px] text-black_900 w-[auto]">
-                          12:30pm - 2:30pm CST
-                        </Text>
-                      </Column>
-                    </Row>
-                    <Row className="bg-gray_100 items-center justify-evenly 2xl:my-[10px] 3xl:my-[12px] lg:my-[8px] xl:my-[9px] lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
-                      <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-end lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
-                        <Text className="font-bold leading-[normal] mb-[3px] mr-[2px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[69%]">
-                          Oct 8
-                        </Text>
-                      </Column>
-                      <Column className="mt-[1px] w-[84%]">
-                        <Text className="font-semibold ml-[1px] lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900 w-[auto]">
-                          Jones Commons
-                        </Text>
-                        <Row className="justify-between mt-[1px] w-[100%]">
-                          <Text className="font-bold mt-[4px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[21px] text-black_900 w-[auto]">
-                            Jones Public Cleanup
-                          </Text>
-                          <Text className="font-semibold mb-[1px] lg:text-[16px] xl:text-[18px] 2xl:text-[21px] 3xl:text-[25px] text-black_900 w-[auto]">
-                            1hr
-                          </Text>
-                        </Row>
-                        <Text className="font-semibold ml-[1px] mt-[4px] lg:text-[11px] xl:text-[13px] 2xl:text-[15px] 3xl:text-[18px] text-black_900 w-[auto]">
-                          1:30pm - 2:30pm CST
-                        </Text>
-                      </Column>
-                    </Row>
-                    <Row className="bg-gray_100 items-center justify-evenly 2xl:my-[10px] 3xl:my-[12px] lg:my-[8px] xl:my-[9px] lg:p-[3px] 2xl:p-[4px] xl:p-[4px] 3xl:p-[5px] w-[100%]">
-                      <Column className="bg-gray_900 lg:h-[29px] xl:h-[33px] 2xl:h-[37px] 3xl:h-[45px] items-end lg:px-[2px] 2xl:px-[3px] xl:px-[3px] 3xl:px-[4px] rounded-radius5 lg:w-[28px] xl:w-[32px] 2xl:w-[36px] 3xl:w-[44px]">
-                        <Text className="font-bold leading-[normal] mb-[3px] mr-[2px] xl:text-[10px] 2xl:text-[12px] 3xl:text-[14px] lg:text-[9px] text-center text-white_A700 w-[69%]">
-                          Oct 13
-                        </Text>
-                      </Column>
-                      <Column className="mt-[1px] w-[84%]">
-                        <Text className="font-semibold ml-[1px] lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900 w-[auto]">
-                          Jones Commons
-                        </Text>
-                        <Row className="justify-between mt-[1px] w-[100%]">
-                          <Text className="font-bold mt-[4px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[21px] text-black_900 w-[auto]">
-                            Jones Security
-                          </Text>
-                          <Text className="font-semibold mb-[1px] lg:text-[16px] xl:text-[18px] 2xl:text-[21px] 3xl:text-[25px] text-black_900 w-[auto]">
-                            1hr
-                          </Text>
-                        </Row>
-                        <Text className="font-semibold ml-[1px] mt-[4px] lg:text-[11px] xl:text-[13px] 2xl:text-[15px] 3xl:text-[18px] text-black_900 w-[auto]">
-                          8:30pm - 9:30pm CST
-                        </Text>
-                      </Column>
-                    </Row>
+                    ))}
                   </List>
                 </Column>
                 <Img
