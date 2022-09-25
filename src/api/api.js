@@ -1,56 +1,60 @@
 // convert
+import axios from "axios";
+
 const instance = axios.create({
-    baseURL: 'https://api.example.com'
+    baseURL: 'https://web-production-3a7b.up.railway.app'
 });
 
-function setAuth(authToken) {
+export function setAuth(authToken) {
     instance.defaults.headers.common['Authorization'] = authToken;
 }
 
-function getEventAttendance(eventId) {
+export function getEventAttendance(eventId) {
     return instance.get(`/attendance/${eventId}`);
 }
 
-function getLeaderboardByCollege(collegeName) {
-    return instance.get(`/colleges/${collegeName}/leaderboard/`);
+export function getLeaderboardByCollege(collegeName) {
+    return instance.get(`/colleges/${collegeName}/leaderboard`);
 }
 
-function getUserById(userId) {
+export function getUserById(userId) {
     return instance.get(`/users/${userId}`);
 }
 
-function getEventsByCollege(collegeName) {
+export function getEventsByCollege(collegeName) {
     return instance.get(`/events/${collegeName}`);
 }
 
-function getCollaborators(collegeName) {
+export function getCollaborators(collegeName) {
     return instance.get(`/collaborators/${collegeName}`);
 }
 
-function createEvent(collegeName, event) {
+export function createEvent(collegeName, event) {
     return instance.post(`/events/${collegeName}`, event);
 }
 
-function updateEvent(collegeName, eventId, event) {
+export function updateEvent(collegeName, eventId, event) {
     return instance.put(`/events/${collegeName}`, event, { params: {event_id: eventId}});
 }
 
-function deleteEvent(collegeName, eventId) {
+export function deleteEvent(collegeName, eventId) {
     return instance.delete(`/events/${collegeName}`), { params: {event_id: eventId}};
 }
 
-function addAttendance(eventId) {
+export function addAttendance(eventId) {
     return instance.post(`/attendance/${eventId}`);
 }
 
-function removeAttendance(eventId) {
+export function removeAttendance(eventId) {
     return instance.delete(`/attendance/${eventId}`);
 }
 
-function updateUserInfo(userId, collegeName) {
+export function updateUserInfo(userId, collegeName) {
     return instance.put(`/users/${userId}`, { 'affiliation': collegeName});
 }
 
-function updateAttendance(eventId) {
+export function updateAttendance(eventId) {
     return instance.put(`/attendance/${eventId}`);
 }
+
+export * as api from './api';
