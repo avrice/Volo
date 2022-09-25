@@ -15,6 +15,9 @@ import { FormControl, InputLabel, Input, TextField } from "@mui/material";
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { createEvent, instance } from "api/api";
+import axios from "axios";
+import moment from "moment";
+import { auth } from "app/firebase";
 
 const CoordinatorScreenPage = () => {
   const navigate = useNavigate();
@@ -23,10 +26,8 @@ const CoordinatorScreenPage = () => {
   const [netId, setNetId] = useState('');
   const [contactName, setContactName] = useState('');
   const [location, setLocation] = useState('');
-  const [startDate, setStartDate] = useState(0);
-  const [startTime, setStartTime] = useState(0);
-  const [endDate, setEndDate] = useState(0);
-  const [endTime, setEndTime] = useState(0);
+  const [startDate, setStartDate] = useState(new moment());
+  const [endDate, setEndDate] = useState(new moment());
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,13 +36,30 @@ const CoordinatorScreenPage = () => {
       netId: netId,
       contactName: contactName,
       location: location,
-      startDate: startDate,
-      endDate: endDate,
-      endTime: endTime
+      startDate: startDate.toISOString(),
+      endDate: endDate.toISOString(),
+      uid: auth.currentUser.uid
     }
+    console.log(data);
+    
     let parsedCollege = college.toLowerCase().split(' ')[0];
+    /* const data = {
+      title: title,
+      college: parsedCollege,
+      netId: netId,
+      contactName: contactName,
+      location: location,
+      startDate: startDate,
+      endDate: endDate
+    } */
     console.log(instance.defaults.headers.common['Authorization']); 
     createEvent(parsedCollege, data);
+    /* axios.post('http://127.0.0.1:8000/api/create-event', data,
+    {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then((response) => console.log(response)); */
   }
 
   function handleNavigate2() {
@@ -255,9 +273,6 @@ const CoordinatorScreenPage = () => {
                     </List>
                   </Column>
                   <Column className="items-end mt-[3px] w-[37%]">
-                    <Text className="font-bold lg:mr-[2px] 2xl:mr-[3px] xl:mr-[3px] 3xl:mr-[4px] lg:text-[20px] xl:text-[23px] 2xl:text-[26px] 3xl:text-[31px] text-black_900 w-[auto]">
-                      Post Volunteer Opportunity
-                    </Text>
 
                   </Column>
                 </Row>
@@ -286,7 +301,7 @@ const CoordinatorScreenPage = () => {
               </FormControl>
               <Button className="font-bold lg:ml-[217px] xl:ml-[248px] 2xl:ml-[279px] 3xl:ml-[335px] lg:mt-[22px] xl:mt-[26px] 2xl:mt-[29px] 3xl:mt-[35px] lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-center w-[20%]"
               onClick={handleSubmit}>
-                Save
+                Create Event
               </Button>
             </Column>
           </Column>

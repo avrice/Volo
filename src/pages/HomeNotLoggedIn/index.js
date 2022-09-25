@@ -7,7 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch } from "react-redux";
 import { login } from "features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { setAuth } from "api/api";
+import { instance, setAuth } from "api/api";
 
 
 const HomeNotLoggedInPage = () => {
@@ -22,9 +22,6 @@ const HomeNotLoggedInPage = () => {
       }
   });
 
-  if (loading) {
-      return (<p>Loading login page...</p>);
-  } else {
   const onClick = () => {
     signInWithGoogle().then(() => {
         const authUser = auth.currentUser;
@@ -33,11 +30,17 @@ const HomeNotLoggedInPage = () => {
                 console.log('set auth token');
                 sessionStorage.setItem('authToken', token);
                 setAuth(token);
+                console.log(instance.defaults.headers.common['Authorization']);
             });
         } else {
             console.log('not able to set auth token');
         }
     });}
+
+  if (loading) {
+      return (<p>Loading login page...</p>);
+  } else {
+  
   return (
     <>
       <Stack className="bg-white_A700 font-nunito lg:h-[630px] xl:h-[721px] 2xl:h-[811px] 3xl:h-[973px] mx-[auto] w-[100%]">

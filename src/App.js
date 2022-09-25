@@ -28,7 +28,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Navigate to='/home' />} />
             <Route path='/home' element={<HomeNotLoggedInPage />} />
-            <Route path='/dashboard' element={<LoginRoute><JamesDashboard /></LoginRoute>} />
+            <Route path='/dashboard' element={<LoginRoute><DashboardPage /></LoginRoute>} />
             <Route path='/leaderboard' element={<LoginRoute><LeaderboardPage /></LoginRoute>} />
             <Route path='/coordinate' element={<LoginRoute><CoordinatorScreenPage /></LoginRoute>} />
             <Route path='*' element={<NoMatch />} />

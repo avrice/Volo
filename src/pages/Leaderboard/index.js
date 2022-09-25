@@ -72,7 +72,7 @@ const LeaderboardPage = () => {
                 className="gap-[0] min-h-[auto] w-[93%]"
                 orientation="vertical"
               >
-                {leaderboard != null ? leaderboard['users'].map((item) => (
+                {leaderboard != undefined && leaderboard['users'] ? leaderboard['users'].map((item) => (
                 <Row className="bg-white_A700 items-center lg:my-[11px] xl:my-[12px] 2xl:my-[14px] 3xl:my-[17px] lg:p-[11px] xl:p-[12px] 2xl:p-[14px] 3xl:p-[17px] w-[100%]">
                   <Text className="font-bold lg:text-[17px] xl:text-[20px] 2xl:text-[22px] 3xl:text-[27px] text-black_900 w-[auto]">
 

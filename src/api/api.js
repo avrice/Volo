@@ -30,7 +30,7 @@ export function getCollaborators(collegeName) {
 }
 
 export function createEvent(collegeName, event) {
-    return instance.post(`/events/${collegeName}`, event);
+    return instance.post(`/events/${collegeName}?uid=${event.uid}`, event);
 }
 
 export function updateEvent(collegeName, eventId, event) {
