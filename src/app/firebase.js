@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import store from '../app/store'
 import { 
     GoogleAuthProvider,
     getAuth,
@@ -16,6 +17,7 @@ import {
     where,
     addDoc,
 } from "firebase/firestore";
+import {displaySnackbar} from "../features/snackbar/snackSlice";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCTTn5gWVYhav_Z4fTtxoWj2EtHL18YhQo",
@@ -46,16 +48,16 @@ export const signInWithGoogle = async () => {
 
         // Yeets user if email domain not rice.edu
         if (!user.email.includes('@rice.edu')) {
-            signOutFromGoogle();
+            await signOutFromGoogle();
             throw new Error('Unauthorized email (must be Rice email)');
         }
 
     } catch (err) {
         console.log(err);
         if (typeof err == 'string') {
-            alert(err);
+            store.dispatch(displaySnackbar(err));
         } else {
-            alert(err.message);
+            store.dispatch(displaySnackbar(err.message));
         }
     }
 };
@@ -66,7 +68,7 @@ export const signOutFromGoogle = async () => {
         auth.signOut();
     } catch (err) {
         console.error(err);
-        alert(err.message);
+        store.dispatch(displaySnackbar(err.message));
     }
 }
 
@@ -75,7 +77,7 @@ export const logInWithEmailAndPassword = async (email, password) => {
         await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
         console.error(err);
-        alert(err.message);
+        store.dispatch(displaySnackbar(err.message));
     }
 };
 
@@ -84,17 +86,17 @@ export const registerWithEmailAndPassword = async (name, email, password) => {
         const res = await createUserWithEmailAndPassword(auth, email, password);
     } catch (err) {
         console.error(err);
-        alert(err.message);
+        store.dispatch(displaySnackbar(err.message));
     }
 };
 
 export const sendPasswordReset = async (email) => {
     try {
         await sendPasswordResetEmail(auth, email);
-        alert("Password reset link sent!");
+        store.dispatch(displaySnackbar("Password reset link sent!"));
     } catch (err) {
         console.error(err);
-        alert(err.message);
+        store.dispatch(displaySnackbar(err.message));
     }
 };
 

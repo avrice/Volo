@@ -17,19 +17,23 @@ import OverlayPage from 'pages/Overlay';
 import OverlayOnePage from 'pages/OverlayOne';
 import OverlayTwoPage from 'pages/OverlayTwo';
 import OverlayThreePage from 'pages/OverlayThree';
+import AppSnackbar from "./components/Snackbar";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Navigate to='/home' />} />
-        <Route path='/home' element={<HomeNotLoggedInPage />} />
-        <Route path='/dashboard' element={<LoginRoute><DashboardPage /></LoginRoute>} />
-        <Route path='/leaderboard' element={<LoginRoute><LeaderboardPage /></LoginRoute>} />
-        <Route path='/coordinate' element={<LoginRoute><CoordinatorScreenPage /></LoginRoute>} />
-        <Route path='*' element={<NoMatch />} />
-      </Routes>
-    </BrowserRouter>
+      <>
+        <AppSnackbar/>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Navigate to='/home' />} />
+            <Route path='/home' element={<HomeNotLoggedInPage />} />
+            <Route path='/dashboard' element={<LoginRoute><DashboardPage /></LoginRoute>} />
+            <Route path='/leaderboard' element={<LoginRoute><LeaderboardPage /></LoginRoute>} />
+            <Route path='/coordinate' element={<LoginRoute><CoordinatorScreenPage /></LoginRoute>} />
+            <Route path='*' element={<NoMatch />} />
+          </Routes>
+        </BrowserRouter>
+      </>
   );
 }
 
