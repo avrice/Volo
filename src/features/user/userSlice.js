@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { auth } from '../../app/firebase';
+import {setAuth} from "../../api/api";
 
 const initUser = {
     uid: '',
@@ -11,6 +12,7 @@ export const userSlice = createSlice({
     initialState: initUser,
     reducers: {
         setToken: (state, action) => {
+            setAuth(action.payload);
             state.authToken = action.payload;
             state.authToken = 'placeholder';
             
