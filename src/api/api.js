@@ -1,6 +1,6 @@
 // convert
 const instance = axios.create({
-    baseURL: 'https://api.example.com'
+    baseURL: 'https://web-production-3a7b.up.railway.app'
 });
 
 function setAuth(authToken) {
