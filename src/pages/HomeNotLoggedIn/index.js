@@ -7,6 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch } from "react-redux";
 import { login } from "features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import { setAuth } from "api/api";
 
 
 const HomeNotLoggedInPage = () => {
@@ -31,6 +32,7 @@ const HomeNotLoggedInPage = () => {
             authUser.getIdToken().then((token) => {
                 console.log('set auth token');
                 sessionStorage.setItem('authToken', token);
+                setAuth(token);
             });
         } else {
             console.log('not able to set auth token');

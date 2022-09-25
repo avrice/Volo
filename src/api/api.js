@@ -1,9 +1,11 @@
+import axios from 'axios';
+
 // convert
 const instance = axios.create({
     baseURL: 'https://web-production-3a7b.up.railway.app'
 });
 
-function setAuth(authToken) {
+export function setAuth(authToken) {
     instance.defaults.headers.common['Authorization'] = authToken;
 }
 
