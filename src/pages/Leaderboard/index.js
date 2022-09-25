@@ -7,9 +7,13 @@ import { getLeaderboardByCollege } from "api/api";
 const LeaderboardPage = () => {
   const [leaderboard, setLeaderboard] = React.useState(null);
 
-  getLeaderboardByCollege("jones").then((data) => {
-    setLeaderboard(data);
-  });
+    React.useEffect(() => {
+      getLeaderboardByCollege("jones").then((data) => {
+        console.log(data)
+        setLeaderboard(data['data']);
+      });
+    }, [])
+
   return (
     <>
       <Column className="font-inter items-center mx-[auto] w-[100%]">
