@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { useNavigate } from "react-router-dom";
 import { Column, Stack, Img, Row, Text, List, Line, Button } from "components";
@@ -11,7 +11,7 @@ import {
   AccordionItemButton,
 } from "react-accessible-accordion";
 import { Link } from "react-router-dom";
-import { FormControl, InputLabel, Input, TextField } from "@mui/material";
+
 const CoordinatorScreenPage = () => {
   const navigate = useNavigate();
 
@@ -295,16 +295,50 @@ const CoordinatorScreenPage = () => {
               New Event
             </Text>
             <Column className="lg:mt-[26px] xl:mt-[30px] 2xl:mt-[33px] 3xl:mt-[40px] w-[100%]">
-              <FormControl>
-                <TextField label="Event title"/>
-                <TextField label="Contact netId"/>
-                <TextField label="Contact name"/>
-                <TextField label="Event location"/>
-                <TextField label="Start date"/>
-                <TextField label="Start time"/>
-                <TextField label="End date" />
-                <TextField label="End time" />
-              </FormControl>
+              <Text className="font-normal ml-[1px] not-italic lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900_72 w-[auto]">
+                Add title
+              </Text>
+              <Line className="bg-bluegray_900 h-[1px] mt-[1px] w-[99%]" />
+              <Text className="font-normal lg:mt-[11px] xl:mt-[12px] 2xl:mt-[14px] 3xl:mt-[17px] not-italic lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900_72 w-[auto]">
+                Contact netID
+              </Text>
+              <Line className="bg-bluegray_900 h-[1px] mt-[1px] w-[99%]" />
+              <Text className="font-normal lg:mt-[10px] xl:mt-[12px] 2xl:mt-[13px] 3xl:mt-[16px] not-italic lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900_72 w-[auto]">
+                Contact Name
+              </Text>
+              <Line className="bg-bluegray_900 h-[1px] mt-[2px] w-[99%]" />
+              <Row className="items-end mt-[2px] w-[95%]">
+                <Text className="font-normal xl:mt-[11px] 2xl:mt-[12px] 3xl:mt-[15px] lg:mt-[9px] not-italic lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-black_900_72 w-[auto]">
+                  Add location
+                </Text>
+                <Img
+                  src="images/img_location.svg"
+                  className="lg:h-[20px] xl:h-[23px] 2xl:h-[25px] 3xl:h-[30px] mb-[1px] lg:ml-[188px] xl:ml-[215px] 2xl:ml-[242px] 3xl:ml-[290px] w-[5%]"
+                  alt="location"
+                />
+              </Row>
+              <Line className="bg-bluegray_900 h-[1px] mt-[1px] w-[99%]" />
+              <Row className="ml-[1px] lg:mt-[19px] xl:mt-[22px] 2xl:mt-[25px] 3xl:mt-[30px] w-[99%]">
+                <Line className="bg-black_900 lg:h-[21px] xl:h-[25px] 2xl:h-[28px] 3xl:h-[33px] lg:mt-[2px] 2xl:mt-[3px] xl:mt-[3px] 3xl:mt-[4px] w-[1px]" />
+                <Line className="bg-bluegray_900 h-[1px] lg:ml-[55px] xl:ml-[63px] 2xl:ml-[71px] 3xl:ml-[85px] lg:mt-[2px] 2xl:mt-[3px] xl:mt-[3px] 3xl:mt-[4px] w-[79%]" />
+                <Line className="bg-black_900 lg:h-[24px] xl:h-[28px] 2xl:h-[31px] 3xl:h-[37px] w-[1px]" />
+              </Row>
+              <Row className="items-center justify-between ml-[1px] lg:mt-[22px] xl:mt-[26px] 2xl:mt-[29px] 3xl:mt-[35px] w-[99%]">
+                <Line className="bg-black_900 lg:h-[21px] xl:h-[25px] 2xl:h-[28px] 3xl:h-[33px] w-[1px]" />
+                <Line className="bg-black_900 lg:h-[21px] xl:h-[24px] 2xl:h-[27px] 3xl:h-[32px] w-[1px]" />
+              </Row>
+              <Row className="items-center justify-between lg:mt-[22px] xl:mt-[25px] 2xl:mt-[28px] 3xl:mt-[34px] w-[100%]">
+                <Line className="bg-black_900 lg:h-[22px] xl:h-[25px] 2xl:h-[28px] 3xl:h-[34px] w-[1px]" />
+                <Line className="bg-black_900 lg:h-[22px] xl:h-[25px] 2xl:h-[28px] 3xl:h-[34px] w-[1px]" />
+              </Row>
+              <Row className="font-inter lg:mt-[22px] xl:mt-[25px] 2xl:mt-[28px] 3xl:mt-[34px] w-[100%]">
+                <Line className="bg-black_900 lg:h-[23px] xl:h-[26px] 2xl:h-[29px] 3xl:h-[35px] w-[1px]" />
+                <Text className="font-normal 3xl:ml-[10px] lg:ml-[7px] xl:ml-[8px] 2xl:ml-[9px] lg:mt-[6px] xl:mt-[7px] 2xl:mt-[8px] 3xl:mt-[9px] not-italic lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-bluegray_400 w-[auto]">
+                  10:00 PM
+                </Text>
+                <Line className="bg-black_900 lg:h-[23px] xl:h-[26px] 2xl:h-[29px] 3xl:h-[35px] lg:ml-[218px] xl:ml-[249px] 2xl:ml-[280px] 3xl:ml-[336px] w-[1px]" />
+              </Row>
+              <Line className="bg-bluegray_900 h-[1px] ml-[1px] w-[99%]" />
               <Button className="font-bold lg:ml-[217px] xl:ml-[248px] 2xl:ml-[279px] 3xl:ml-[335px] lg:mt-[22px] xl:mt-[26px] 2xl:mt-[29px] 3xl:mt-[35px] lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-center w-[20%]">
                 Save
               </Button>
