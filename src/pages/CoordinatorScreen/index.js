@@ -12,6 +12,9 @@ import {
 } from "react-accessible-accordion";
 import { Link } from "react-router-dom";
 import { FormControl, InputLabel, Input, TextField } from "@mui/material";
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
+
 const CoordinatorScreenPage = () => {
   const navigate = useNavigate();
 
@@ -229,82 +232,24 @@ const CoordinatorScreenPage = () => {
                     <Text className="font-bold lg:mr-[2px] 2xl:mr-[3px] xl:mr-[3px] 3xl:mr-[4px] lg:text-[20px] xl:text-[23px] 2xl:text-[26px] 3xl:text-[31px] text-black_900 w-[auto]">
                       Post Volunteer Opportunity
                     </Text>
-                    <Line className="bg-bluegray_900 h-[1px] lg:mt-[202px] xl:mt-[231px] 2xl:mt-[260px] 3xl:mt-[312px] w-[81%]" />
-                    <Column className="lg:mt-[42px] xl:mt-[48px] 2xl:mt-[54px] 3xl:mt-[64px] w-[83%]">
-                      <Line className="bg-bluegray_900 h-[1px] w-[100%]" />
-                      <Line className="bg-bluegray_900 h-[1px] lg:mt-[43px] xl:mt-[50px] 2xl:mt-[56px] 3xl:mt-[67px] w-[100%]" />
-                      <Img
-                        src="images/img_clock.svg"
-                        className="lg:h-[14px] xl:h-[16px] 2xl:h-[18px] 3xl:h-[21px] lg:ml-[196px] xl:ml-[224px] 2xl:ml-[252px] 3xl:ml-[302px] lg:mt-[2px] 2xl:mt-[3px] xl:mt-[3px] 3xl:mt-[4px] w-[6%]"
-                        alt="clock"
-                      />
-                    </Column>
+                    
                   </Column>
                 </Row>
               </Column>
             </Stack>
-            <Accordion
-              preExpanded={[0]}
-              className="absolute bottom-[13%] right-[17%] w-[24%]"
-            >
-              {" "}
-              {[...Array(4)].map((item, index) => (
-                <AccordionItem uuid={index} key={Math.random()}>
-                  <Column className="xl:pb-[4px] lg:pb-[4px] 2xl:pb-[5px] 3xl:pb-[6px] xl:pr-[4px] lg:pr-[4px] 2xl:pr-[5px] 3xl:pr-[6px] w-[100%]">
-                    <AccordionItemHeading className="w-full">
-                      <AccordionItemButton>
-                        <AccordionItemState>
-                          {({ expanded }) => (
-                            <Row className="items-end justify-between w-[20%]">
-                              {expanded && (
-                                <Img
-                                  src="images/img_line20.svg"
-                                  className="h-[1px] mb-[4px] lg:mt-[4px] xl:mt-[5px] 2xl:mt-[6px] 3xl:mt-[7px] w-[25%]"
-                                  alt="LineTwenty"
-                                />
-                              )}
-                              <Text className="font-normal ml-[3px] not-italic 2xl:text-[10px] 3xl:text-[12px] lg:text-[8px] xl:text-[9px] text-bluegray_400 w-[auto]">
-                                Start date
-                              </Text>
-                              {!expanded && (
-                                <Img
-                                  src="images/img_line20.svg"
-                                  className="h-[1px] lg:my-[3px] 2xl:my-[4px] xl:my-[4px] 3xl:my-[5px] w-[25%]"
-                                  alt="LineThirtySeven"
-                                />
-                              )}
-                            </Row>
-                          )}
-                        </AccordionItemState>
-                      </AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel className="w-full">
-                      <Column className="items-center 3xl:ml-[10px] lg:ml-[7px] xl:ml-[8px] 2xl:ml-[9px] lg:mr-[200px] xl:mr-[229px] 2xl:mr-[258px] 3xl:mr-[309px] lg:mt-[2px] 2xl:mt-[3px] xl:mt-[3px] 3xl:mt-[4px] w-[22%]">
-                        <Text className="font-normal not-italic lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-bluegray_400 w-[auto]">
-                          09/24/2022
-                        </Text>
-                      </Column>
-                    </AccordionItemPanel>
-                  </Column>
-                  <Line className="self-center w-[100%] h-[1px] bg-bluegray_900" />
-                </AccordionItem>
-              ))}
-            </Accordion>
           </Stack>
           <Column className="absolute bottom-[4%] font-nunito items-center right-[17%] w-[24%]">
-            <Text className="font-medium lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] text-black_900 w-[auto]">
-              New Event
-            </Text>
             <Column className="lg:mt-[26px] xl:mt-[30px] 2xl:mt-[33px] 3xl:mt-[40px] w-[100%]">
               <FormControl>
                 <TextField label="Event title"/>
                 <TextField label="Contact netId"/>
                 <TextField label="Contact name"/>
                 <TextField label="Event location"/>
-                <TextField label="Start date"/>
-                <TextField label="Start time"/>
-                <TextField label="End date" />
-                <TextField label="End time" />
+                <LocalizationProvider dateAdapter={AdapterMoment}>
+                  <DateTimePicker onChange={() => {}} renderInput={props => <TextField {...props} />}/>
+                  <DateTimePicker onChange={() => {}} renderInput={props => <TextField {...props} />}/>
+                </LocalizationProvider>
+                
               </FormControl>
               <Button className="font-bold lg:ml-[217px] xl:ml-[248px] 2xl:ml-[279px] 3xl:ml-[335px] lg:mt-[22px] xl:mt-[26px] 2xl:mt-[29px] 3xl:mt-[35px] lg:text-[10px] xl:text-[12px] 2xl:text-[13px] 3xl:text-[16px] text-center w-[20%]">
                 Save
