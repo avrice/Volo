@@ -1,6 +1,6 @@
 # Volo
 
-Developed a comprehensive website to allow Rice students to keep track of their volunteer hours, and for volunteer coordinators to set up
+A comprehensive website to allow Rice students to keep track of their volunteer hours, and for volunteer coordinators to set up
 volunteering events that students can view and join.
 
 ## Screenshots
